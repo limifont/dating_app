@@ -1,0 +1,58 @@
+<% if @person.errors.any? %>
+  <div class="red-text"> 
+    <h3>Errors:</h3>
+    <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  </div>  
+<% end %>
+
+<%= form_for @person do |f| %>
+  <%= f.label :username  %>
+  <%= f.text_field :username %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  
+  <%= f.label :email_address %>
+  <%= f.text_field :email_address %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :gender, 'Gender' %>
+  <%= f.select :gender, Person.genders %>
+
+  <%= f.label :height, 'Height' %>
+  <%= f.select :height, Person.heights %>
+
+  <%= f.label :hair_color, 'Hair Color' %>
+  <%= f.select :hair_color, Person.hair_colors %>
+
+  <%= f.label :eye_color, 'Eye Color' %>
+  <%= f.select :eye_color, Person.eye_colors %>
+
+  <%= f.label :weight, 'Weight' %>
+  <%= f.text_field :weight %>
+
+  <%= f.label :religion, 'Religion' %>
+  <%= f.select :religion, Person.religions %>
+
+  <%= f.label :smoke %>
+  <%= f.check_box :smoke %>
+
+  <%= f.label :drink %>
+  <%= f.check_box :drink %>
+
+  <%= f.label :about_me %>
+  <%= f.text_field :about_me %>
+
+  <%= f.submit 'Save' %>
+<% end %>

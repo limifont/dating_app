@@ -1,0 +1,10 @@
+<h1>Search Results</h1>
+<% @people.each do |match| %>
+  <ul>
+    <% if match.gender != current_user.gender %>
+    <li>
+      <%= link_to match.first_name, person_path(match) %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

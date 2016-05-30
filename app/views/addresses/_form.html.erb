@@ -1,0 +1,17 @@
+
+
+<%= form_for [@person, @address] do |f| %>
+  <%= f.label :street, 'Street'%>
+  <%= f.text_field :street %>
+
+  <%= f.label :city, 'City' %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state, 'State' %>
+  <%= f.select :state, Address.states %>
+
+  <%= f.label :country %>
+  <%= f.select :country, Address.countries %>
+
+  <%= f.submit %>
+<% end %>
