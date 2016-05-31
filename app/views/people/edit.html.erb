@@ -1,3 +1,4 @@
 <h1>Edit profile</h1>
 
 <%= render(partial: 'form') %>
+<%= link_to 'CANCEL ACCOUNT', person_path, method: :delete, data: {confirm: 'Really cancel account? We will be sad to see you go!'} %>

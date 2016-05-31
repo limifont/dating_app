@@ -8,16 +8,16 @@
 </head>
 <body>
 
-  <% if current_user %> 
-    <ul> 
-      <li><%= current_user.username %></li> 
-      <li><%= link_to 'View Profile', person_path(current_user) %></li>
-      <li><%= link_to 'Log out', logout_path, method: :delete %></li> 
-    </ul> 
-  <% else %> 
+  <% if current_user == nil %> 
     <ul> 
       <li><%= link_to "Login", 'login' %></li> 
       <li><%= link_to "Signup", new_person_path %></li> 
+    </ul> 
+  <% else %> 
+    <ul> 
+      <li><%= current_user.username %></li>
+      <li><%= link_to 'View Profile', person_path(current_user) %></li>
+      <li><%= link_to 'Log out', logout_path, method: :delete %></li> 
     </ul> 
   <% end %>
   <hr />
