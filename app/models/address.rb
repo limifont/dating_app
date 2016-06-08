@@ -10,7 +10,7 @@ class Address < ActiveRecord::Base
     COUNTRIES
   end
 
-  def self.states
+  def self.states 
     STATES
   end
 end

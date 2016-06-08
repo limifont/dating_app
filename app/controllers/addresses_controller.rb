@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
   
 
   def index
-    @addresses = Address.all
+    @addresses = @person.addresses
   end
 
   def show
@@ -15,10 +15,10 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(address_params)
+    @address = @person.addresses.new(address_params)
     if @address.save
       flash[:success] = "Address saved"
-      redirect_to person_path(@person)
+      redirect_to new_person_interest_path(@person)
     else
       render :new
     end
@@ -30,7 +30,7 @@ class AddressesController < ApplicationController
   def update
     if @address.update(address_params)
       flash[:success] = "Address updated!"
-      redirect_to person_path(@person)
+      redirect_to account_path
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class AddressesController < ApplicationController
   def destroy
     @address.destroy
     flash[:success] = "Address deleted"
-    redirect_to person_path(@person)
+    redirect_to account_path
   end
 
   private

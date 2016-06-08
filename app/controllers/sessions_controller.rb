@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
     @person = Person.find_by_username(params[:session][:username])
     if @person && @person.authenticate(params[:session][:password])
       session[:person_id] = @person.id
-      redirect_to person_path(@person)
+      redirect_to account_path
+      # redirect_to person_path(@person)
     else
       flash.now[:danger] = 'Invalid email/password combination'  
       render :new
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:person_id] = nil
     redirect_to root_path 
   end
 end

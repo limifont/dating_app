@@ -1,0 +1,5 @@
+<%= form_for [@person, @interest] do |f| %>
+  <%= f.label :hobby %>
+  <%= f.select :hobby, Interest.hobbies %>
+  <%= f.submit, 'Save' %>
+<% end %>

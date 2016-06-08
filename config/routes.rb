@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
-  
+  get '/account', to: 'static_pages#account', as: :account
   # get 'sessions/new'
 
   # get 'sessions/create'

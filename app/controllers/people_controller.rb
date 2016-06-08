@@ -1,9 +1,14 @@
 class PeopleController < ApplicationController
   before_action :person, except: [:index, :new, :create]
-  before_action :require_user, only: [:index, :show]
+  before_action :authorize, only: [:index, :show]
 
   def index
     @people = Person.all.by_name
+    if current_user.gender == 'Female'
+      @opposite_gender = Person.where(gender: 'Male')
+    else
+      @opposite_gender = Person.where(gender: 'Female')
+    end
   end
 
   def show
@@ -38,6 +43,7 @@ class PeopleController < ApplicationController
 
   def destroy
     person_name = @person.first_name
+    session[:person_id] = nil
     @person.destroy
     flash[:success] = "Thank you for using the dating app, #{person_name}!"
     redirect_to root_path

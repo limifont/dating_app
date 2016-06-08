@@ -1,2 +1,14 @@
-<h1>Interests#index</h1>
-<p>Find me in app/views/interests/index.html.erb</p>
+<h1>Interests</h1>
+
+<% if @interests.any? %>
+  <ul>
+    <% @interests.each do |hobby| %>
+        <li>
+          <h6><%= hobby.hobby %></h6>
+          <h6><%= link_to 'Delete', person_interest(@person, hobby) %></h6>
+        </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h6>Add a hobby!</h6>
+<% end %>
